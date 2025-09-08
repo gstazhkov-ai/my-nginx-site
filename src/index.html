@@ -2,18 +2,106 @@
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <title>Сайт на Nginx и Docker</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Портфолио [Ваше Имя]</title>
     <style>
-        body { font-family: sans-serif; display: flex; justify-content: center; align-items: center; height: 100vh; background-color: #282c34; color: white; }
-        .container { text-align: center; }
-        h1 { color: #61dafb; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f9;
+            color: #333;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+        .portfolio {
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            padding: 40px;
+            max-width: 600px;
+            width: 90%;
+            text-align: center;
+            transition: transform 0.3s;
+        }
+        .portfolio:hover {
+            transform: translateY(-5px);
+        }
+        .avatar {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 5px solid #e0e0e0;
+            margin-bottom: 20px;
+        }
+        h1 {
+            margin: 0;
+            font-size: 2.5em;
+            color: #2c3e50;
+        }
+        .subtitle {
+            font-size: 1.2em;
+            color: #7f8c8d;
+            margin-bottom: 25px;
+        }
+        .bio {
+            font-size: 1.1em;
+            line-height: 1.6;
+            margin-bottom: 30px;
+        }
+        .projects-title {
+            font-size: 1.5em;
+            color: #34495e;
+            margin-bottom: 20px;
+            border-top: 1px solid #eee;
+            padding-top: 30px;
+        }
+        .buttons-container {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+        .btn {
+            background-color: #3498db;
+            color: white;
+            padding: 15px 20px;
+            border: none;
+            border-radius: 8px;
+            text-decoration: none;
+            font-size: 1.1em;
+            font-weight: bold;
+            transition: background-color 0.3s, transform 0.2s;
+            display: block;
+        }
+        .btn:hover {
+            background-color: #2980b9;
+            transform: scale(1.03);
+        }
     </style>
 </head>
 <body>
-    <div class="container">
-        <h1>🚀 Привет из Docker!!</h1>
-        <p>Этот сайт обновляется автоматически через GitHub.</p>
-        <p>Версия 1.0</p>
+
+    <div class="portfolio">
+        <img src="https://via.placeholder.com/150" alt="Фотография [Ваше Имя]" class="avatar">
+
+        <h1>[Ваше Имя]</h1>
+
+        <p class="subtitle">Веб-разработчик | Специалист по DevOps</p>
+
+        <p class="bio">
+            Привет! Я создаю современные веб-сайты и увлекаюсь автоматизацией развертывания. Этот сайт работает на Docker и обновляется через GitHub.
+        </p>
+
+        <h2 class="projects-title">Мои проекты 🚀</h2>
+        <div class="buttons-container">
+            <a href="project1.html" class="btn">Проект №1</a>
+            <a href="project2.html" class="btn">Проект №2</a>
+            <a href="project3.html" class="btn">Проект №3</a>
+        </div>
     </div>
+
 </body>
 </html>

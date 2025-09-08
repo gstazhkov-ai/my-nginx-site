@@ -51,3 +51,82 @@ h1 {
     display: inline-block; /* Чтобы отступ работал */
     margin-top: 25px;
 }
+
+.game-container {
+    background-color: #3a404b;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+    text-align: center;
+}
+
+h1 {
+    color: #61dafb; /* Цвет заголовка */
+    margin-bottom: 20px;
+}
+
+#status {
+    font-size: 1.5em;
+    margin-bottom: 20px;
+    color: #98c379; /* Цвет текста статуса */
+}
+
+.board {
+    display: grid;
+    grid-template-columns: repeat(3, 100px);
+    grid-template-rows: repeat(3, 100px);
+    gap: 5px;
+    margin: 0 auto 20px auto;
+    width: 315px; /* 3*100px + 2*5px */
+    height: 315px;
+    border: 2px solid #61dafb;
+    border-radius: 5px;
+}
+
+.cell {
+    width: 100px;
+    height: 100px;
+    background-color: #4b5361;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 3em;
+    font-weight: bold;
+    cursor: pointer;
+    border: 1px solid #5a6470;
+    transition: background-color 0.2s ease-in-out;
+}
+
+.cell:hover {
+    background-color: #626c7a;
+}
+
+.cell.X {
+    color: #e06c75; /* Красный для X */
+}
+
+.cell.O {
+    color: #e5c07b; /* Желтый для O */
+}
+
+#restartButton {
+    background-color: #c678dd; /* Фиолетовый */
+    color: white;
+    padding: 10px 20px;
+    font-size: 1em;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+#restartButton:hover {
+    background-color: #a261ba;
+}
+
+.back-link {
+    color: #bdc3c7;
+    text-decoration: none;
+    margin-top: 20px;
+    display: inline-block;
+}

@@ -27,3 +27,27 @@ h1 {
     color: #bdc3c7;
     text-decoration: none;
 }
+/* Стили для контейнера проекта */
+.project-container {
+    max-width: 800px;
+    margin: 20px;
+    padding: 30px;
+    background-color: #34495e;
+    border-radius: 10px;
+}
+
+/* Стили для "мини-окошка" с результатами поиска */
+.gcse-searchresults-only {
+    min-height: 400px; /* Задаем минимальную высоту */
+    border: 1px solid #7f8c8d;
+    background-color: #ecf0f1;
+    padding: 15px;
+    margin-top: 20px;
+    border-radius: 5px;
+}
+
+/* Ссылка "Назад" */
+.back-link {
+    display: inline-block; /* Чтобы отступ работал */
+    margin-top: 25px;
+}

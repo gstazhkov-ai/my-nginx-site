@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Название Проекта 1</title>
+    <link href="https://cdn.jsdelivr.net/npm/round-slider@1.6.1/dist/roundslider.min.css" rel="stylesheet" />
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -29,10 +30,30 @@
             <div class="cell" data-cell-index="8"></div>
         </div>
         <button id="restartButton">Начать заново</button>
+    </div>
 
-
+        <div class="widget-container synth-container">
+            <h1>Визуальный Синтезатор</h1>
+            <canvas id="waveCanvas" width="800" height="200"></canvas>
+            <div class="mixer-panel">
+                <div class="knob-container">
+                    <div id="knob-frequency"></div>
+                    <label>Частота</label>
+                </div>
+                <div class="knob-container">
+                    <div id="knob-amplitude"></div>
+                    <label>Амплитуда</label>
+                </div>
+                <div class="knob-container">
+                    <div id="knob-complexity"></div>
+                    <label>Сложность</label>
+                </div>
+            </div>
+        </div>
 
     <script async src="https://cse.google.com/cse.js?cx=d13937580eb794ec6"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/round-slider@1.6.1/dist/roundslider.min.js"></script>
     <script src="script.js" defer></script>
 
 </body>

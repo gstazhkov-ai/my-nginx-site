@@ -1,6 +1,90 @@
 // Простой скрипт, чтобы убедиться, что JS работает
 
+$(document).ready(function() {
+    // Настройки для наших регуляторов
+    const knobSettings = {
+        radius: 60,
+        width: 16,
+        handleSize: "+8",
+        sliderType: "min-range",
+        handleShape: "round",
+        min: 1,
+        max: 100
+    };
 
+    // Получаем доступ к холсту (canvas)
+    const canvas = document.getElementById('waveCanvas');
+    const ctx = canvas.getContext('2d');
+    const width = canvas.width;
+    const height = canvas.height;
+
+    // Переменные для параметров волны
+    let frequency = 20;
+    let amplitude = 50;
+    let complexity = 50;
+
+    // --- Функция для рисования волны ---
+    function drawWave() {
+        // Очищаем холст перед каждым новым кадром
+        ctx.clearRect(0, 0, width, height);
+
+        // Начинаем рисовать
+        ctx.beginPath();
+        ctx.lineWidth = 2;
+        ctx.strokeStyle = '#00bcd4';
+
+        const centerY = height / 2;
+        
+        // Проходим по всей ширине холста
+        for (let x = 0; x < width; x++) {
+            // Основная синусоида, управляемая Частотой и Амплитудой
+            const mainWave = Math.sin(x * (frequency / 1000)) * (amplitude / 2);
+            // Дополнительная волна для "Сложности"
+            const complexWave = Math.sin(x * (complexity / 500)) * (amplitude / 4);
+
+            const y = centerY + mainWave + complexWave;
+            
+            if (x === 0) {
+                ctx.moveTo(x, y);
+            } else {
+                ctx.lineTo(x, y);
+            }
+        }
+        // Отображаем нарисованную линию
+        ctx.stroke();
+    }
+
+    // --- Инициализация регуляторов ---
+    $("#knob-frequency").roundSlider({
+        ...knobSettings,
+        value: frequency,
+        drag: function (args) {
+            frequency = args.value;
+            drawWave(); // Перерисовываем волну при изменении
+        }
+    });
+
+    $("#knob-amplitude").roundSlider({
+        ...knobSettings,
+        value: amplitude,
+        drag: function (args) {
+            amplitude = args.value;
+            drawWave();
+        }
+    });
+
+    $("#knob-complexity").roundSlider({
+        ...knobSettings,
+        value: complexity,
+        drag: function (args) {
+            complexity = args.value;
+            drawWave();
+        }
+    });
+
+    // Рисуем волну в первый раз при загрузке страницы
+    drawWave();
+});
 document.addEventListener('DOMContentLoaded', () => {
     const statusDisplay = document.getElementById('status');
     const gameBoard = document.getElementById('gameBoard');

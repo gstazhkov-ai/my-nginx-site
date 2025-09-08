@@ -4,132 +4,267 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Портфолио Стажков Георгий</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
+        :root {
+            --hh-blue: #1A73E8; /* Основной синий цвет hh.ru */
+            --hh-dark-blue: #1558B1;
+            --hh-light-grey: #f5f5f5;
+            --hh-text-dark: #333;
+            --hh-text-grey: #666;
+            --hh-border-grey: #e0e0e0;
+            --hh-green: #34A853; /* Для кнопки скачать резюме */
+        }
+
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            font-family: 'Inter', sans-serif;
             margin: 0;
             padding: 0;
-            background-color: #f4f4f9;
-            color: #333;
+            background-color: var(--hh-light-grey);
+            color: var(--hh-text-dark);
             display: flex;
             justify-content: center;
-            align-items: center;
+            align-items: flex-start; /* Начинаем сверху */
             min-height: 100vh;
-            padding: 20px 0;
+            padding: 40px 20px;
+            box-sizing: border-box; /* Учитываем padding в общей ширине */
         }
-        .portfolio {
+        .container {
+            width: 100%;
+            max-width: 960px; /* Типичная ширина для центрального контента */
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+        .header-block, .profile-block, .skills-block, .projects-block {
             background: white;
-            border-radius: 15px;
-            box-shadow: 0 10px T30px rgba(0, 0, 0, 0.1);
-            padding: 40px;
-            max-width: 600px;
-            width: 90%;
-            text-align: center;
-            transition: transform 0.3s;
+            border-radius: 8px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+            padding: 30px;
+            border: 1px solid var(--hh-border-grey);
         }
-        .portfolio:hover {
-            transform: translateY(-5px);
-        }
-        .avatar {
-            width: 150px;
-            height: 150px;
-            border-radius: 50%;
-            object-fit: cover;
-            border: 5px solid #e0e0e0;
-            margin-bottom: 20px;
-        }
-        h1 {
-            margin: 0;
-            font-size: 2.5em;
-            color: #2c3e50;
-        }
-        .subtitle {
-            font-size: 1.2em;
-            color: #7f8c8d;
+
+        /* Header (Profile Info) */
+        .profile-header {
+            display: flex;
+            align-items: center;
+            gap: 25px;
             margin-bottom: 25px;
         }
-        .bio {
+        .avatar {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid var(--hh-blue);
+            flex-shrink: 0; /* Не сжимать */
+        }
+        .profile-info h1 {
+            margin: 0 0 5px 0;
+            font-size: 2.2em;
+            color: var(--hh-text-dark);
+            font-weight: 700;
+        }
+        .profile-info p {
+            margin: 0;
             font-size: 1.1em;
+            color: var(--hh-text-grey);
+            font-weight: 500;
+        }
+        .profile-bio {
+            font-size: 1em;
             line-height: 1.6;
-            margin-bottom: 30px;
+            color: var(--hh-text-dark);
+            margin-bottom: 20px;
         }
         .resume-links {
             display: flex;
-            justify-content: center;
             gap: 15px;
-            margin-bottom: 30px;
+            flex-wrap: wrap; /* Для мобильных устройств */
         }
-        .projects-title {
+        .btn {
+            display: inline-flex; /* Для выравнивания текста и иконки, если понадобится */
+            align-items: center;
+            justify-content: center;
+            padding: 12px 25px;
+            border: none;
+            border-radius: 6px;
+            font-size: 1em;
+            font-weight: 600;
+            text-decoration: none;
+            cursor: pointer;
+            transition: background-color 0.2s, box-shadow 0.2s;
+        }
+        .btn-primary {
+            background-color: var(--hh-blue);
+            color: white;
+        }
+        .btn-primary:hover {
+            background-color: var(--hh-dark-blue);
+            box-shadow: 0 2px 6px rgba(26,115,232,0.3);
+        }
+        .btn-secondary {
+            background-color: var(--hh-green);
+            color: white;
+        }
+        .btn-secondary:hover {
+            background-color: #2D8B48;
+            box-shadow: 0 2px 6px rgba(52,168,83,0.3);
+        }
+        .btn-outline {
+            background-color: white;
+            color: var(--hh-blue);
+            border: 1px solid var(--hh-blue);
+        }
+        .btn-outline:hover {
+            background-color: var(--hh-blue);
+            color: white;
+        }
+
+        /* Skills Block */
+        .skills-block h2 {
             font-size: 1.5em;
-            color: #34495e;
+            color: var(--hh-text-dark);
             margin-bottom: 20px;
-            border-top: 1px solid #eee;
-            padding-top: 30px;
+            font-weight: 600;
         }
-        .buttons-container {
+        .skills-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        .skill-tag {
+            background-color: var(--hh-light-grey);
+            color: var(--hh-text-dark);
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-size: 0.9em;
+            font-weight: 500;
+            border: 1px solid var(--hh-border-grey);
+        }
+
+        /* Projects Block */
+        .projects-block h2 {
+            font-size: 1.5em;
+            color: var(--hh-text-dark);
+            margin-bottom: 20px;
+            font-weight: 600;
+        }
+        .project-list {
             display: flex;
             flex-direction: column;
             gap: 15px;
         }
-        .btn {
-            background-color: #3498db;
-            color: white;
-            padding: 15px 20px;
-            border: none;
+        .project-item {
+            background-color: var(--hh-light-grey);
+            padding: 20px;
             border-radius: 8px;
-            text-decoration: none;
-            font-size: 1em;
-            font-weight: bold;
-            transition: background-color 0.3s, transform 0.2s;
-            display: inline-block;
+            border: 1px solid var(--hh-border-grey);
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            transition: transform 0.2s, box-shadow 0.2s;
         }
-        .btn:hover {
-            background-color: #2980b9;
-            transform: scale(1.05);
+        .project-item:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 3px 10px rgba(0,0,0,0.08);
         }
-        .btn-secondary {
-            background-color: #2ecc71;
+        .project-item h3 {
+            margin: 0;
+            font-size: 1.25em;
+            color: var(--hh-blue);
+            font-weight: 600;
         }
-        .btn-secondary:hover {
-            background-color: #27ae60;
+        .project-item p {
+            margin: 0;
+            font-size: 0.95em;
+            color: var(--hh-text-grey);
+        }
+        .project-item .btn {
+            align-self: flex-start; /* Прикрепить кнопку к левому краю */
+            background-color: var(--hh-blue);
+            color: white;
+            padding: 8px 18px;
+            font-size: 0.9em;
+            font-weight: 500;
+            border-radius: 4px;
+        }
+        .project-item .btn:hover {
+            background-color: var(--hh-dark-blue);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .profile-header {
+                flex-direction: column;
+                text-align: center;
+            }
+            .resume-links {
+                flex-direction: column;
+                align-items: center;
+            }
         }
     </style>
 </head>
 <body>
-
-    <div class="portfolio">
-        <img src="images/i.png" alt="Фотография Стажков Георгий" class="avatar">
-        
-        
-
-        <h1>Стажков Георгий</h1>
-
-        <p class="subtitle">Junior Frontend Developer | Специалист по DevOps</p>
-
-        <p class="bio">
-            Привет! Я создаю современные веб-сайты и увлекаюсь автоматизацией развертывания. Этот сайт работает на Docker и обновляется через GitHub.
-        </p>
-        
-        <div class="resume-links">
-            <a href="files/Стажков Георгий.pdf" class="btn" download>Скачать резюме (PDF)</a>
-            <a href="https://hh.ru/resume/6bcdc2a8ff0f5ec7f00039ed1f54317a44375a" class="btn btn-secondary" target="_blank">Смотреть онлайн</a>
+    <div class="container">
+        <div class="profile-block">
+            <div class="profile-header">
+                <img src="images/my_photo.jpg" alt="Фотография [Ваше Имя]" class="avatar">
+                <div class="profile-info">
+                    <h1>Стажков Георгий</h1>
+                    <p>Веб-разработчик | Специалист по DevOps</p>
+                </div>
+            </div>
+            <p class="profile-bio">
+                Привет! Я создаю современные веб-сайты и увлекаюсь автоматизацией развертывания. Этот сайт работает на Docker и обновляется через GitHub. Здесь вы найдете информацию обо мне и мои проекты.
+            </p>
+            <div class="resume-links">
+                <a href="files/resume.pdf" class="btn btn-secondary" download>Скачать резюме (PDF)</a>
+                <a href="https://hh.ru/resume/6bcdc2a8ff0f5ec7f00039ed1f54317a44375a" class="btn btn-primary" target="_blank">Мое резюме на HH.RU</a>
+                <a href="https://t.me/@st_georgiy" class="btn btn-outline">Написать мне</a> </div>
         </div>
 
-
-        <h2 class="projects-title">Мои проекты WEB</h2>
-        <div class="buttons-container">
-            <a href="project1/" class="btn">Проект №1</a>
-            <a href="project2/" class="btn">Проект №2</a>
-            <a href="project3/" class="btn">Проект №3</a>
+        <div class="skills-block">
+            <h2>Ключевые навыки</h2>
+            <div class="skills-grid">
+                <span class="skill-tag">HTML5</span>
+                <span class="skill-tag">CSS3</span>
+                <span class="skill-tag">JavaScript</span>
+                <span class="skill-tag">Python</span>
+                <span class="skill-tag">Flask</span>
+                <span class="skill-tag">Docker</span>
+                <span class="skill-tag">Nginx</span>
+                <span class="skill-tag">Git</span>
+                <span class="skill-tag">GitHub Actions</span>
+                <span class="skill-tag">Linux</span>
+                <span class="skill-tag">SQL</span>
+                <span class="skill-tag">Frontend</span>
+                <span class="skill-tag">Backend</span>
+                <span class="skill-tag">DevOps</span>
+                </div>
         </div>
 
-        <h2 class="projects-title">Мои проекты с AI</h2>
-        <div class="buttons-container">
-            <a href="project4/" class="btn">Проект №1</a>
-            <a href="project5/" class="btn">Проект №2</a>
-            <a href="project6/" class="btn">Проект №3</a>
+        <div class="projects-block">
+            <h2>Мои проекты (Портфолио)</h2>
+            <div class="project-list">
+                <div class="project-item">
+                    <h3>Проект №1: Крестики и JS</h3>
+                    <p>Немного простых JS </p>
+                    <a href="project1/" class="btn">Посмотреть проект</a>
+                </div>
+                <div class="project-item">
+                    <h3>Проект №2: HR проект</h3>
+                    <p>Лендинг HR продукта, с описанием функций.</p>
+                    <a href="project2/" class="btn">Посмотреть проект</a>
+                </div>
+                <div class="project-item">
+                    <h3>Проект №3: Дашборд</h3>
+                    <p>Интерактивный веб-интерфейс.</p>
+                    <a href="project3/" class="btn">Посмотреть проект</a>
+                </div>
+                </div>
         </div>
     </div>
-
 </body>
 </html>

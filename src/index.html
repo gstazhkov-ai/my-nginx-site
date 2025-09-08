@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Портфолио Cтажков Георгий</title>
+    <title>Портфолио Стажков Георгий</title>
     <style>
         body {
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
@@ -15,11 +15,12 @@
             justify-content: center;
             align-items: center;
             min-height: 100vh;
+            padding: 20px 0;
         }
         .portfolio {
             background: white;
             border-radius: 15px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 10px T30px rgba(0, 0, 0, 0.1);
             padding: 40px;
             max-width: 600px;
             width: 90%;
@@ -52,6 +53,12 @@
             line-height: 1.6;
             margin-bottom: 30px;
         }
+        .resume-links {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 30px;
+        }
         .projects-title {
             font-size: 1.5em;
             color: #34495e;
@@ -71,21 +78,29 @@
             border: none;
             border-radius: 8px;
             text-decoration: none;
-            font-size: 1.1em;
+            font-size: 1em;
             font-weight: bold;
             transition: background-color 0.3s, transform 0.2s;
-            display: block;
+            display: inline-block;
         }
         .btn:hover {
             background-color: #2980b9;
-            transform: scale(1.03);
+            transform: scale(1.05);
+        }
+        .btn-secondary {
+            background-color: #2ecc71;
+        }
+        .btn-secondary:hover {
+            background-color: #27ae60;
         }
     </style>
 </head>
 <body>
 
     <div class="portfolio">
-        <img src="https://via.placeholder.com/150" alt="Фотография [Ваше Имя]" class="avatar">
+        <img src="images/i.png" alt="Фотография Стажков Георгий" class="avatar">
+        
+        
 
         <h1>Стажков Георгий</h1>
 
@@ -94,6 +109,12 @@
         <p class="bio">
             Привет! Я создаю современные веб-сайты и увлекаюсь автоматизацией развертывания. Этот сайт работает на Docker и обновляется через GitHub.
         </p>
+        
+        <div class="resume-links">
+            <a href="files/Стажков Георгий.pdf" class="btn" download>Скачать резюме (PDF)</a>
+            <a href="https://your-online-resume-link.com" class="btn btn-secondary" target="_blank">Смотреть онлайн</a>
+        </div>
+
 
         <h2 class="projects-title">Мои проекты 🚀</h2>
         <div class="buttons-container">
